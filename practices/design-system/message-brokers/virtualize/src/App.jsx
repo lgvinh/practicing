@@ -1,8 +1,14 @@
 import { useMemo, useState } from "react";
-import { CenterDiv } from "./components/CenterDiv";
-import { PaperButton } from "./components/PaperButton";
+import {
+  components
+} from "@lib/react-components";
 import { NormalFlow } from "./flows/NormalFlow";
 import { MessageBrokerFlow } from "./flows/MessageBrokerFlow";
+
+const {
+  CenterDiv,
+  PaperButton
+} = components;
 
 const flows = ['NormalFlow', 'MessageBrokerFlow'];
 
