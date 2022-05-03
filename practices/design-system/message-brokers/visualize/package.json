@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@lib/react-packages": "file:../../../../lib/react-packages",
+    "@lib/react-packages": "file:__npm-registry__/lib-react-packages-0.1.0.tgz",
     "antd": "^4.20.2",
     "cross-env": "^7.0.3",
     "react": "^18.1.0",
