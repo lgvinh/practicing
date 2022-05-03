@@ -1,22 +1,22 @@
 import { useMemo, useState } from "react";
-// import { components } from '@lib/react-components';
+import { components } from '@lib/react-components';
 
-import {
-  CenterDiv,
-  PaperButton
-} from "./components";
 import { NormalFlow } from "./flows/NormalFlow";
 import { MessageBrokerFlow } from "./flows/MessageBrokerFlow";
 
-// const {
-//   Arrow
-// } = components;
+const {
+  Arrow,
+  CenterDiv,
+  PaperButton
+} = components;
 
 const flows = ['NormalFlow', 'MessageBrokerFlow'];
 
 const App = () => {
   const [currentFlow, setCurrentFlow] = useState('NormalFlow');
   console.log('Arrow :>> ', Arrow);
+  console.log('CenterDiv :>> ', CenterDiv);
+  console.log('PaperButton :>> ', PaperButton);
 
   const currentPage = useMemo(() => {
     switch (currentFlow) {

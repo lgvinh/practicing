@@ -1,5 +1,5 @@
 {
-  "name": "react-components-2",
+  "name": "@lib/react-packages",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
