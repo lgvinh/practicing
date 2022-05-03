@@ -1,9 +1,7 @@
 import { useState } from 'react';
 import { notification } from 'antd';
 import styled from 'styled-components';
-
 import { components } from '@lib/react-packages';
-
 import { delay } from '../utils/functions';
 
 const {
@@ -12,16 +10,15 @@ const {
   FlexContainer,
   PaperButton,
   Pointer,
-  Message
+  Message,
+  Container
 } = components;
 
-const MessageBrokerErrorContainer = styled.div``;
-
-const MessageBrokerErrorFlowContainer = styled.div`
+const NormalErrorFlowContainer = styled.div`
   position: relative;
 `;
 
-export const MessageBrokerErrorFlow = () => {
+export const NormalErrorFlow = () => {
   const [isActive, setIsActive] = useState(false);
 
   const openNotification = async () => {
@@ -30,23 +27,25 @@ export const MessageBrokerErrorFlow = () => {
     }
 
     setIsActive(true);
-    await delay(4);
+    await delay(2);
     const args = {
-      message: 'Success',
+      message: 'Failed',
       description:
-        'Sent message successfully',
+        'Server couldn\'t receive message',
       duration: 3,
     };
     notification.open(args);
   };
 
   return (
-    <MessageBrokerErrorFlowContainer>
-      <Message
-        isActive={isActive}
-        haveMessageBroker={true}
-      />
-      <MessageBrokerErrorContainer>
+    <Container
+      minHeight={500}
+    >
+      <NormalErrorFlowContainer>
+        <Message
+          isActive={isActive}
+          haveMessageBroker={false}
+        />
         <FlexContainer>
           <Box
             bgColor='black'
@@ -56,25 +55,18 @@ export const MessageBrokerErrorFlow = () => {
           </Box>
           <Pointer />
           <Box
-            bgColor='purple'
-            color='white'
-          >
-            Message Broker
-          </Box>
-          <Pointer />
-          <Box
             bgColor='red'
             color='white'
           >
             Service B
           </Box>
         </FlexContainer>
-      </MessageBrokerErrorContainer>
-      <CenterDiv marginTop={100}>
-        <PaperButton onClick={openNotification}>
-          See actions
-        </PaperButton>
-      </CenterDiv>
-    </MessageBrokerErrorFlowContainer>
+        <CenterDiv marginTop={100}>
+          <PaperButton onClick={openNotification}>
+            See actions
+          </PaperButton>
+        </CenterDiv>
+      </NormalErrorFlowContainer>
+    </Container>
   );
 };

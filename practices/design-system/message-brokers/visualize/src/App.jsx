@@ -2,6 +2,7 @@ import { useState } from "react";
 import { components } from '@lib/react-packages';
 
 import {
+  Introduction,
   NormalFlow,
   NormalErrorFlow,
   MessageBrokerFlow,
@@ -14,6 +15,7 @@ const {
 } = components;
 
 const flows = [
+  <Introduction />,
   <NormalFlow />,
   <NormalErrorFlow />,
   <MessageBrokerFlow />,
@@ -29,11 +31,26 @@ const App = () => {
     )
   };
 
+  const setPreviousFlow = () => {
+    setCurrentFlow(
+      (flow) => flow > 0 ? currentFlow - 1 : flows.length - 1
+    )
+  };
+
   return (
     <>
       {flows[currentFlow]}
       <CenterDiv marginTop={30}>
-        <PaperButton onClick={setNextFlow}>
+        <PaperButton
+          onClick={setPreviousFlow}
+          margin={'10px'}
+        >
+          Previous
+        </PaperButton>
+        <PaperButton
+          onClick={setNextFlow}
+          margin={'10px'}
+        >
           Next
         </PaperButton>
       </CenterDiv>

@@ -30,6 +30,8 @@ export const PaperButton = styled.button`
   -webkit-user-select: none;
   touch-action: manipulation;
 
+  margin: ${({ margin }) => margin || '10px'};
+
   &:hover {
     box-shadow: rgba(0, 0, 0, .3) 2px 8px 8px -5px;
     transform: translate3d(0, 2px, 0);
