@@ -2,10 +2,7 @@ import { useState } from 'react';
 import { notification } from 'antd';
 import styled from 'styled-components';
 import { components } from '@lib/react-packages';
-
-import {
-  delay
-} from '../utils/functions';
+import { delay } from '../utils/functions';
 
 const {
   Box,
@@ -16,11 +13,11 @@ const {
   Message
 } = components;
 
-const NormalFlowContainer = styled.div`
+const NormalErrorFlowContainer = styled.div`
   position: relative;
 `;
 
-export const NormalFlow = () => {
+export const NormalErrorFlow = () => {
   const [isActive, setIsActive] = useState(false);
 
   const openNotification = async () => {
@@ -31,16 +28,16 @@ export const NormalFlow = () => {
     setIsActive(true);
     await delay(2);
     const args = {
-      message: 'Success',
+      message: 'Failed',
       description:
-        'Sent message successfully',
+        'Server couldn\'t receive message',
       duration: 3,
     };
     notification.open(args);
   };
 
   return (
-    <NormalFlowContainer>
+    <NormalErrorFlowContainer>
       <Message
         isActive={isActive}
         haveMessageBroker={false}
@@ -54,7 +51,7 @@ export const NormalFlow = () => {
         </Box>
         <Pointer />
         <Box
-          bgColor='green'
+          bgColor='red'
           color='white'
         >
           Service B
@@ -65,6 +62,6 @@ export const NormalFlow = () => {
           See actions
         </PaperButton>
       </CenterDiv>
-    </NormalFlowContainer>
+    </NormalErrorFlowContainer>
   );
 };

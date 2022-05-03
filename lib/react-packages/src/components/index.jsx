@@ -4,3 +4,4 @@ export * from './CenterDiv';
 export * from './FlexContainer';
 export * from './PaperButton';
 export * from './Pointer';
+export * from './Message';

@@ -15,13 +15,13 @@ const {
   Message
 } = components;
 
-const MessageBrokerContainer = styled.div``;
+const MessageBrokerErrorContainer = styled.div``;
 
-const MessageBrokerFlowContainer = styled.div`
+const MessageBrokerErrorFlowContainer = styled.div`
   position: relative;
 `;
 
-export const MessageBrokerFlow = () => {
+export const MessageBrokerErrorFlow = () => {
   const [isActive, setIsActive] = useState(false);
 
   const openNotification = async () => {
@@ -41,12 +41,12 @@ export const MessageBrokerFlow = () => {
   };
 
   return (
-    <MessageBrokerFlowContainer>
+    <MessageBrokerErrorFlowContainer>
       <Message
         isActive={isActive}
         haveMessageBroker={true}
       />
-      <MessageBrokerContainer>
+      <MessageBrokerErrorContainer>
         <FlexContainer>
           <Box
             bgColor='black'
@@ -63,18 +63,18 @@ export const MessageBrokerFlow = () => {
           </Box>
           <Pointer />
           <Box
-            bgColor='green'
+            bgColor='red'
             color='white'
           >
             Service B
           </Box>
         </FlexContainer>
-      </MessageBrokerContainer>
+      </MessageBrokerErrorContainer>
       <CenterDiv marginTop={100}>
         <PaperButton onClick={openNotification}>
           See actions
         </PaperButton>
       </CenterDiv>
-    </MessageBrokerFlowContainer>
+    </MessageBrokerErrorFlowContainer>
   );
 };

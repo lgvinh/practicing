@@ -1,45 +1,39 @@
-import { useMemo, useState } from "react";
+import { useState } from "react";
 import { components } from '@lib/react-packages';
 
-import { NormalFlow } from "./flows/NormalFlow";
-import { MessageBrokerFlow } from "./flows/MessageBrokerFlow";
+import {
+  NormalFlow,
+  NormalErrorFlow,
+  MessageBrokerFlow,
+  MessageBrokerErrorFlow
+} from "./flows";
 
 const {
   CenterDiv,
   PaperButton
 } = components;
 
-const flows = ['NormalFlow', 'MessageBrokerFlow'];
+const flows = [
+  <NormalFlow />,
+  <NormalErrorFlow />,
+  <MessageBrokerFlow />,
+  <MessageBrokerErrorFlow />
+];
 
 const App = () => {
-  const [currentFlow, setCurrentFlow] = useState('NormalFlow');
+  const [currentFlow, setCurrentFlow] = useState(0);
 
-  const currentPage = useMemo(() => {
-    switch (currentFlow) {
-      case 'NormalFlow':
-        return <NormalFlow />
-      case 'MessageBrokerFlow':
-        return <MessageBrokerFlow />
-      default:
-        break;
-    }
-  }, [currentFlow]);
-
-  const setCurrentPage = () => {
-    const currentIndex = flows.findIndex(flow => flow === currentFlow);
-
-    if (currentIndex < flows.length - 1) {
-      return setCurrentFlow(flows[currentIndex + 1]);
-    }
-
-    return setCurrentFlow(flows[0]);
+  const setNextFlow = () => {
+    setCurrentFlow(
+      (flow) => flow < flows.length - 1 ? currentFlow + 1 : 0
+    )
   };
 
   return (
     <>
-      {currentPage}
+      {flows[currentFlow]}
       <CenterDiv marginTop={30}>
-        <PaperButton onClick={setCurrentPage}>
+        <PaperButton onClick={setNextFlow}>
           Next
         </PaperButton>
       </CenterDiv>
