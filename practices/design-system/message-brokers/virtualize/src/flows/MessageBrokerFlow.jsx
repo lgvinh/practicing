@@ -1,14 +1,17 @@
 import styled from 'styled-components';
 
-import { Box } from '../components/Box';
-import { CenterDiv } from '../components/CenterDiv';
-import { FlexContainer } from '../components/FlexContainer';
-import { PaperButton } from '../components/PaperButton';
-import { Pointer } from '../components/Pointer';
+import { components } from '@lib/react-packages';
+
+const {
+  Box,
+  CenterDiv,
+  FlexContainer,
+  PaperButton,
+  Pointer
+} = components;
 
 const MessageBrokerContainer = styled.div`
   transition: all 700ms ease 0s;
-  // transform: rotate(40deg);
 `
 
 export const MessageBrokerFlow = () => {

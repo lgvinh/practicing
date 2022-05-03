@@ -1,8 +1,12 @@
-import { Box } from '../components/Box';
-import { CenterDiv } from '../components/CenterDiv';
-import { FlexContainer } from '../components/FlexContainer';
-import { PaperButton } from '../components/PaperButton';
-import { Pointer } from '../components/Pointer';
+import { components } from '@lib/react-packages';
+
+const {
+  Box,
+  CenterDiv,
+  FlexContainer,
+  PaperButton,
+  Pointer
+} = components;
 
 export const NormalFlow = () => {
   return (
