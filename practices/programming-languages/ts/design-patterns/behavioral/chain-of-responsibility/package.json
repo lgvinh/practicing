@@ -1,7 +1,7 @@
 {
   "name": "chain-of-responsibility",
   "version": "0.0.0",
-  "description": "Minimalistic boilerplate to quick-start Node.js development in TypeScript.",
+  "description": "practicing chain of responsibility in TypeScript.",
   "engines": {
     "node": ">= 16.13 <17"
   },

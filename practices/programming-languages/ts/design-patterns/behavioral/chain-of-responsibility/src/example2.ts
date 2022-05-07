@@ -9,6 +9,7 @@ interface IUser {
 
 class NormalSignIn extends AbstractChainHandler<IUser> {
   public handle(user: IUser): IUser {
+    console.log('NormalSignIn: Processing user sign in');
     return this.nextHandler ? this.nextHandler.handle(user) : user;
   }
 }
@@ -50,6 +51,17 @@ class AuthenticateUser extends AbstractChainHandler<IUser> {
   }
 }
 
+class CheckUser extends AbstractChainHandler<IUser> {
+  public handle(user: IUser): IUser {
+    if (user.name === 'Tom Holland no May') {
+      console.log(`CheckUser: user "${user.id}" name is valid, proceed`);
+      return this.nextHandler ? this.nextHandler.handle(user) : user;
+    }
+
+    throw new Error(`CheckUser: user "${user.id}" name isn't valid, exit`);
+  }
+}
+
 const processUserSignIn = (handler: IChainHandler<IUser>) => {
   const user: IUser = {
     id: 'Andrew Garfield no Gwen',
@@ -66,10 +78,13 @@ const main = () => {
   const authenticateUser = new AuthenticateUser();
   const validateUser = new ValidateUser();
   const authorizeUser = new AuthorizeUser();
+  // This can be freely added to the sign in process without breaking the current process
+  const checkUser = new CheckUser();
 
   normalSignIn
     .setNext(validateUser)
     .setNext(authenticateUser)
+    // .setNext(checkUser)
     .setNext(authorizeUser);
 
   processUserSignIn(normalSignIn);
